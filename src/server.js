@@ -9,9 +9,9 @@ const app = express();
 //use others
 app.use([
   morgan("dev"),
-  cors(),
   express.json(),
-  express.urlencoded({ extended: false }),
+  express.urlencoded({ extended: true }),
+  cors()
 ]);
 
 //health route
