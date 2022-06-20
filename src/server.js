@@ -6,15 +6,10 @@ require("dotenv").config();
 
 const app = express();
 
-//cors options
-const corsOptions = {
-  origin: "https://amazon-scrapper.netlify.app",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
 //use others
 app.use([
   morgan("dev"),
-  cors(corsOptions),
+  cors(),
   express.json(),
   express.urlencoded({ extended: false }),
 ]);
