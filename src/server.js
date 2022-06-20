@@ -1,13 +1,22 @@
 const express = require("express");
 const createError = require("http-errors");
 const morgan = require("morgan");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
+
+//cors options
+const corsOptions = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+//use others
 app.use([
+  morgan("dev"),
+  cors(corsOptions),
   express.json(),
   express.urlencoded({ extended: false }),
-  morgan("dev"),
 ]);
 
 //health route

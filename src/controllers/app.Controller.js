@@ -36,7 +36,7 @@ const scraptController = async (req, res) => {
         await newPage.goto(link);
         try {
           if (productLink) {
-            dataObj["product-link"] = link;
+            dataObj["productLink"] = link;
           }
 
           if (name) {
@@ -101,12 +101,14 @@ const scraptController = async (req, res) => {
       //push the current data into that array
       scraptedData.push(currentPageData);
     }
-    //close the scrapting browser
+    //close the scrapting browser after scrapting is done
     browser.close();
     //return response
     return res.status(200).json(scraptedData);
     //catch
   } catch (error) {
+    //close the scrapting browser if there are error
+    browser.close();
     res.status(500).json({ msg: error.message });
   }
 };
